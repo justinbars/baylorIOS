@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <title>John Baylor Test Prep</title>
+        
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+
+        <link rel="stylesheet" type="text/css" href="appframework/build/css/icons.css" />
+        <link rel="stylesheet" type="text/css" href="appframework/build/css/af.ui.css"  />
+        <link rel="stylesheet" type="text/css" href="css/style.css?v=1.0.0" />
+        
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+        
+        <link rel="stylesheet" type="text/css" href="master.css?v=1.0.0" />
+
+       <!-- <script src="intelxdk.js"></script>
+		<script src="cordova.js"></script> -->
+		<script type="text/javascript" charset="utf-8" src="appframework/build/ui/appframework.ui.min.js"></script>
+		<script type='application/javascript' src='js/fastclick.js'></script>
+		<script src="js/custom.js"></script>
+		
+		<script type="text/javascript">
+			$.ui.useOSThemes=false; //This must be set before $(document).ready() triggers;
+		</script>
+
+		<!-- emulate touch events on desktop browsers only 
+            <script>
+                if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
+                var script = document.createElement("script");
+                script.src = "plugins/af.desktopBrowsers.js";
+                var tag = $("head").append(script);
+            }
+            </script>
+	-->
+        <script type="text/javascript">
+ 
+            $.ui.autoLaunch = false; /*By default, it is set to true and you're app will run right away.  We set it to false to show a splashscreen*/
+            /* This function runs when the body is loaded.*/
+            var init = function () {
+            
+            window.setTimeout(function () {
+	            $.ui.launch();
+	       		 }, 1500);//We wait 1.5 seconds to call $.ui.launch after DOMContentLoaded fires
+	   			 };
+    		document.addEventListener("DOMContentLoaded", init, false);
+
+    		/* Intel native bridge is available */
+			var onDeviceReady=function(){
+			//hide splash screen
+			intel.xdk.device.hideSplashScreen();
+			};
+			document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+ 			
+ 			window.addEventListener('load', function() {
+ 				FastClick.attach(document.body);//attach fastclick
+   			}, false);
+		</script> 
+
+		<!--  HTML5 player libraries-->
+        <link href="//vjs.zencdn.net/4.6/video-js.css" rel="stylesheet">
+		<script src="//vjs.zencdn.net/4.6/video.js"></script> 
+        
+        
+
+</head>
+<body id="afui" class="ios7">
+        
+    
+        <!-- this is the header div at the top -->
+        <div id="header">
+        
+        </div>
+        
+        <div id="content">
+	        <!-- here is where you can add your panels -->
+	            
+	        
+	        <div data-title='Home' id="main" class="panel" selected="true" data-defer="pages/main.html" data-footer="main_nav">
+	     
+	        </div>
+	        
+	    
+	        
+	        <div data-title='Home' id="home" class="panel" data-defer="pages/landing.html" data-tab="navbar">
+	        <!-- Lesson Plan Main Page, contains three options, ACT PREP SAT PSAT College -->
+	        </div>
+	        
+	        <div data-title='Blog' id="blog" class="panel" data-defer="pages/blog.html" data-tab="navbar">
+	        <!-- Lesson Plan Main Page, contains three options, ACT PREP SAT PSAT College -->
+	        </div>
+	        
+	        
+	        
+	        <div data-title='Course' id="course" class="panel" data-tab="navbar">
+	        <!-- Lesson Plan Main Page, contains three options, ACT PREP SAT PSAT College -->
+	        </div>
+	        
+	        
+	        <div data-title='Video' id="video" class="panel" data-tab="navbar">
+	        <!-- Courses div, will be used for act courses and SAT/PSAT-->
+	
+	        </div>
+	        
+	
+	        
+	        
+	        
+	        
+        
+        </div>
+        
+        <!-- bottom navbar. Add additional tabs here 
+        <footer id="navbar">
+       
+	        <div class="horzRule">
+	        	<div id="navBarPrev"><a href="#prev" class="button previous">Back</a></div>
+	       		<div id="navBarHome"><a href="#home" class="button home">Home</a></div>
+	        	<div id="navBarNext"><a href="#next" class="button next">Next</a></div>
+			</div>
+		
+        </footer>
+         NEXT/HOME/PREV -->
+        <footer id="navbar">
+        <!-- NEXT/HOME/PREV -->
+	        <div class="horzRule">
+	        	<div id="navBarHome"><a href="#home" onclick="pauseVideo()" class="button icon home">Home</a></div>
+	       		<div id="navBarLessons"><a href="pages/lessons.html" onclick="pauseVideo()" class="button icon graph">Lessons</a></div>
+	        	<div id="navBarBlog"><a href="#blog" onclick="pauseVideo()" class="button icon info big">Blog</a></div>
+			</div>
+		
+        </footer>
+        
+        <footer id="main_nav">
+        <!-- GO TO LESSON -->
+        	<div id="navBarMain"><a id="mainNavText" href="#home" class="button begin" onclick="pauseVideo()">Begin Learning!</a></div>
+        </footer>
+        
+
+        
+    
+</body>
+        
+</html>
